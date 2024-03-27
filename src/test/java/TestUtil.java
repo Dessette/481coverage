@@ -12,5 +12,35 @@ public class TestUtil {
   public void setUp() { c = new Util(); }
 
   @Test
-  public void example() { assertTrue(true); }
+  public void testComputeSingleArgument() {
+     assertFalse(c.compute(6));
+  }
+
+  @Test
+  public void testComputeEvenNumberOfArguments() {
+     assertFalse(c.compute(2,3,4,5));
+  }
+
+  @Test(expected = RuntimeException.class)
+  public void testComputeZeroArgument() {
+      try {
+        c.compute(0,1,2);
+        fail("RuntimeException");
+      } catch (RuntimeException e) {}
+  }
+
+  @Test
+  public void testCompute() {
+     assertTrue(c.compute(1,2,3));
+  }
+
+  @Test
+  public void testComputeDivisableLastArgument() {
+     assertTrue(c.compute(7,4,3));
+  }
+
+  @Test
+  public void testComputeNoDivisable() {
+     assertFalse(c.compute(7,6,3));
+  }
 }
