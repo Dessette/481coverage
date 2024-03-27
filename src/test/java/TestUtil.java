@@ -2,6 +2,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.io.RandomAccessFile;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,10 +25,8 @@ public class TestUtil {
 
   @Test(expected = RuntimeException.class)
   public void testComputeZeroArgument() {
-      try {
-        c.compute(0,1,2);
-        fail("RuntimeException");
-      } catch (RuntimeException e) {}
+      c.compute(0,1,2);
+
   }
 
   @Test
